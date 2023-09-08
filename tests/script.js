@@ -18,8 +18,6 @@ export let options = {
     },
 };
 
-// 1. init code
-
 export function setup() {
     let res = http.get(BASE_URL)
     if (res.status !== 200) {
