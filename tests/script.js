@@ -1,6 +1,7 @@
 import http from "k6/http";
 import { sleep, check } from "k6";
 import { SharedArray } from "k6/data";
+import { get_pizza } from "./res_tools.js";
 
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:3333';
 
@@ -55,7 +56,8 @@ export default function () {
             'X-User-ID': customers[Math.floor(Math.random() * customers.length)],
         },
     });
-    console.log(`${res.json().pizza.name} (${res.json().pizza.ingredients.length} ingredients)`);
+    let pizza = get_pizza(res);
+    console.log(`${pizza.name} (${pizza.ingredients.length} ingredients)`);
     check(
         res,
         {
