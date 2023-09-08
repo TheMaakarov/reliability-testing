@@ -10,11 +10,11 @@ const customers = new SharedArray('all my customers', function () {
 
 export let options = {
     stages: [
-        { duration: "60s", target: 10 },
-        { duration: "60s", target: 100 },
+        { duration: "10s", target: 10 },
+        { duration: "5s", target: 100 },
     ],
     thresholds: {
-        "http_req_duration": ["p(95)<1000"],
+        "http_req_duration": ["p(95)<1"],
     },
 };
 
